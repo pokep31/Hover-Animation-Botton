@@ -1,0 +1,43 @@
+:root{
+  --color: hsl(208, 72%, 39%);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  background: #000;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.button{
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  border: 3px solid var(--color);
+  color: white;
+  padding: .5em 1em;
+  border-radius: .25em;
+}
+.button::after{
+  content: '';
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  inset: 0;
+  scale: 0 1;
+  transition: scale 450ms;
+  transform-origin: right;
+}
+.button:hover::after,
+.button:focus-visible::after{
+  transform-origin: left;
+  scale: 1 1;
+}
